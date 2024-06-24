@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (name.trim() === '') {
             nameError.textContent = 'Name is required';
             nameError.classList.add('error');
-            nameError.style.display = 'block';// Use a CSS class to toggle visibility
+             nameError.style.display = 'block';// Use a CSS class to toggle visibility
             isValid = false;
         } else {
             nameError.classList.remove('error');
