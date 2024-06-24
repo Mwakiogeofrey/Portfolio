@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
         if (name.trim() === '') {
             nameError.textContent = 'Name is required';
             nameError.classList.add('error');
-            nameError.style.display = 'block';// Use a CSS class to toggle visibility
+             nameError.style.display = 'block';// Use a CSS class to toggle visibility
             isValid = false;
         } else {
             nameError.classList.remove('error');
@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(response => {
             if (response.ok) {
                 form.reset();
-                alert(`Thank you for your message`);
+                alert(`Thank you for your message: ${message}`);
             } else {
                 response.json().then(data => {
                     if (Object.hasOwnProperty.call(data, 'errors')) {
