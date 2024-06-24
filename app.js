@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(response => {
             if (response.ok) {
                 form.reset();
-                alert(`Thank you for your message: ${message}`);
+                alert(`Thank you for your message`);
             } else {
                 response.json().then(data => {
                     if (Object.hasOwnProperty.call(data, 'errors')) {
