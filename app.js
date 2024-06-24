@@ -21,28 +21,29 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('form').addEventListener('submit', function(event) {
         event.preventDefault();
         let isValid = validateForm();
-    
+
         if (isValid) {
             saveToLocalStorage();
             sendForm();
         }
     });
-    
+
     function validateForm() {
         let isValid = true;
-    
+
         // Name validation
         const name = document.getElementById('name').value;
         const nameError = document.getElementById('usernameError');
         if (name.trim() === '') {
             nameError.textContent = 'Name is required';
             nameError.classList.add('error');
-             nameError.style.display = 'block';// Use a CSS class to toggle visibility
+            nameError.style.display = 'block'; // Show error
             isValid = false;
         } else {
             nameError.classList.remove('error');
+            nameError.style.display = 'none'; // Hide error
         }
-    
+
         // Email validation
         const email = document.getElementById('email').value;
         const emailError = document.getElementById('emailError');
@@ -50,42 +51,43 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!emailPattern.test(email)) {
             emailError.textContent = 'Enter a valid email address';
             emailError.classList.add('error');
-            emailError.style.display = 'block';
+            emailError.style.display = 'block'; // Show error
             isValid = false;
         } else {
             emailError.classList.remove('error');
+            emailError.style.display = 'none'; // Hide error
         }
-    
+
         // Message validation
         const message = document.getElementById('message').value;
         const messageError = document.getElementById('messageError');
         if (message.trim().length < 10) {
             messageError.textContent = 'Message must be at least 10 characters';
             messageError.classList.add('error');
-            messageError.style.display = 'block';
+            messageError.style.display = 'block'; // Show error
             isValid = false;
         } else {
             messageError.classList.remove('error');
+            messageError.style.display = 'none'; // Hide error
         }
-    
+
         return isValid;
     }
-    
+
     function saveToLocalStorage() {
         const name = document.getElementById('name').value;
         const email = document.getElementById('email').value;
         const message = document.getElementById('message').value;
-    
+
         localStorage.setItem('name', name);
         localStorage.setItem('email', email);
         localStorage.setItem('message', message);
     }
-    
+
     function sendForm() {
         const form = document.getElementById('form');
         const formData = new FormData(form);
-        const message = formData.get('message');
-    
+
         fetch(form.action, {
             method: form.method,
             body: formData,
@@ -95,7 +97,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }).then(response => {
             if (response.ok) {
                 form.reset();
-                alert(`Thank you for your message: ${message}`);
+                formData.get(`message`);
             } else {
                 response.json().then(data => {
                     if (Object.hasOwnProperty.call(data, 'errors')) {
