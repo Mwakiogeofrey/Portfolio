@@ -115,10 +115,10 @@ document.addEventListener('DOMContentLoaded', () => {
 // apling my projects dynamicaly
 const projects = [
   {
-    name: "Project 1",
-    image: "images/background.jpg",
+    name: "Seeker Restaurant",
+    image: "images/restaurant.png",
     languages: ["React", "JavaScript", "Html", "Css"],
-    link: "http://"
+    link: "https://seeker-restaurant.vercel.app/"
   },
   {
     name: "Project 2",
@@ -161,7 +161,7 @@ function generateProjectHTML(project) {
                 ${project.languages.map(lang => `<li>${lang}</li>`).join('')}
             </ul>
             <button>
-                <a href="${project.link}">See Project</a>
+                <a href="${project.link}" target="_blank" rel="noopener noreferrer" >See Project</a>
             </button>
         </div>
     `;
